@@ -20,7 +20,7 @@ class CreateMemberTable extends Migration
             $table->string('password');
             $table->string('fullname', 100);
             $table->boolean('is_male');
-            $table->dateTime('birthday')->nullable();
+            $table->date('birthday')->nullable();
             $table->string('email', 100);
             $table->string('phone', 12)->nullable();
             $table->string('picture')->nullable()->default('avatar_default.jpg');

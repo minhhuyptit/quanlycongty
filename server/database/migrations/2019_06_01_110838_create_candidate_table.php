@@ -18,7 +18,7 @@ class CreateCandidateTable extends Migration
             $table->boolean('del_flag')->default(false);
             $table->string('name',100);
             $table->boolean('is_male');
-            $table->dateTime('birthday')->nullable();
+            $table->date('birthday')->nullable();
             $table->string('cv')->nullable()->default('');
             $table->boolean('is_passed');
             $table->integer('university_id')->unsigned();
