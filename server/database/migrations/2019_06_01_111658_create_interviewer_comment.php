@@ -18,6 +18,7 @@ class CreateInterviewerComment extends Migration
             $table->boolean('del_flag')->default(false);
             $table->integer('interviewer_id')->unsigned();
             $table->text("comment");
+            $table->tinyInteger("rating")->nullable()->default(1);
             $table->foreign('interviewer_id')->references('id')->on('interviewer')->onUpdate('cascade');
             $table->timestamps();
         });
