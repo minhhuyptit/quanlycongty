@@ -1,4 +1,14 @@
 <?php
+use App\Member;
+use App\Team;
+use App\TeamMember;
+use App\Configuration;
+use App\Candidate;
+use App\CandidateContact;
+use App\CandidateSkill;
+use App\Interview;
+use App\Interviewer;
+use App\InterviewerComment;
 
 /*
 |--------------------------------------------------------------------------
@@ -11,6 +21,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('getMember', function () {
+    $element = Member::find(1);
+    // $team = Team::find(3);
+    return $element->interviewer_comments;
 });
