@@ -10,6 +10,10 @@ class Interviewer extends Model
     protected $fillable = ['id','del_flag','interview_id','member_id','evaluation',
     'created_by','modified_by','created_at','updated_at'];   
 
+    protected $hidden = [
+        'laravel_through_key'
+    ];
+
     public function member(){
         return $this->belongsTo(Member::class, 'member_id', 'id');
     }

@@ -29,4 +29,5 @@ class Interview extends Model
     public function comment_interviewers(){
         return $this->hasManyThrough(InterviewerComment::class, Interviewer::class, 'interview_id', 'interviewer_id', 'id', 'id');
     }
+    
 }

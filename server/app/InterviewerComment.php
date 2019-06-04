@@ -9,6 +9,10 @@ class InterviewerComment extends Model
     protected $table = 'interviewer_comment'; 
     protected $fillable = ['id','del_flag','interviewer_id','comment','rating','created_by','modified_by','created_at','updated_at'];
 
+    protected $hidden = [
+        'laravel_through_key'
+    ];
+
     public function interview(){
         return $this->belongsToMany(Interview::class, Interviewer::class, 'id', 'interview_id');
     }

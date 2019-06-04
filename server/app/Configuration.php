@@ -9,6 +9,10 @@ class Configuration extends Model
     protected $table = 'configuration';
     protected $fillable = ['id','del_flag','value','description','type','created_at','updated_at'];
 
+    protected $hidden = [
+        'pivot'
+    ];
+
     public function member_access_levels(){
         return $this->hasMany(Member::class, 'access_level', 'id');
     }

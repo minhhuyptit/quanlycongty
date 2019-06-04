@@ -38,4 +38,8 @@ class Candidate extends Model
         return $this->hasMany(Interview::class, 'candidate_id', 'id');
     }
 
+    public function interviewers(){
+        return $this->hasManyThrough(Interviewer::class, Interview::class, 'candidate_id', 'interview_id', 'id', 'id');
+    }
+
 }

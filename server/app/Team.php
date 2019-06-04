@@ -15,7 +15,7 @@ class Team extends Model
     ];
 
     public function members(){
-        return $this->belongsToMany('App\Member', 'App\TeamMember');
+        return $this->belongsToMany(Member::class, TeamMember::class);
     }
 
     public function team_members(){
