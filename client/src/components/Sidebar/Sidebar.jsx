@@ -6,17 +6,12 @@ import {
   AppSidebarForm,
   AppSidebarNav,
   AppSidebarFooter,
-  AppSidebarMinimizer,
-  Suspense
+  AppSidebarMinimizer
 } from "@coreui/react";
 
 import sideBarConfig from "./SidebarConfig";
 
-export default class Sidebar extends Component {
-  constructor(props) {
-    super(props);
-  }
-
+class Sidebar extends Component {
   render() {
 
     return (
@@ -30,3 +25,5 @@ export default class Sidebar extends Component {
     );
   }
 }
+
+export default Sidebar;

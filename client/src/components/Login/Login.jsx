@@ -37,6 +37,7 @@ class Login extends Component {
 
   render() {
     let { isLoading, username, password } = this.state;
+    let hrefLink = "#";
 
     return (
       <Container>
@@ -50,7 +51,7 @@ class Login extends Component {
                 <Card fluid>
                   <Card.Content>
                     <Loader size="massive" active={isLoading} />
-                    <img id="logo" src="/images/logo.png" />
+                    <img id="logo" src="/images/logo.png" alt="logo" />
                     <Form>
                       <Form.Field
                         label="Username"
@@ -71,7 +72,7 @@ class Login extends Component {
                         value={password}
                         onChange={this.handleChange}
                       />
-                      <a href="#" className="forgot-password">
+                      <a href={hrefLink} className="forgot-password">
                         Forgot password?
                       </a>
                       <Button

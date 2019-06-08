@@ -3,12 +3,9 @@ import { AppHeader } from "@coreui/react";
 
 import Sidebar from "./../Sidebar/Sidebar";
 import Header from "./Header";
+import "./index.scss";
 
 class MainLayout extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className="app">

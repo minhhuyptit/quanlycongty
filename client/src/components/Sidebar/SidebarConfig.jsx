@@ -33,20 +33,14 @@ export default {
         ]
       },
       {
-        name: 'Management',
+        name: 'Team Management',
+        icon: 'fa fa-users fa-lg',
+        url: '/team'
+      },
+      {
+        name: 'Configuration',
         icon: 'fa fa-wrench fa-lg',
-        children: [
-          {
-            name: 'Role Management',
-            url: '/management/role',
-            icon: 'fa fa-usb fa-lg'
-          },
-          {
-            name: 'Team Management',
-            url: '/management/team',
-            icon: 'fa fa-users fa-lg'
-          }
-        ]
+        url: '/configuration'
       },
       {
         name: 'Leave Requests',
@@ -63,6 +57,27 @@ export default {
             icon: 'fa fa-calendar fa-lg'
           }
         ]
+      },
+      {
+        name: 'Chat',
+        icon: 'fa fa-comments-o fa-lg',
+        children: [
+          {
+            name: 'Individual',
+            url: '/chat/individual',
+            icon: 'fa fa-comment fa-lg'
+          },
+          {
+            name: 'Group',
+            url: '/chat/group',
+            icon: 'fa fa-comments fa-lg'
+          }
+        ]
+      },
+      {
+        name: 'Drink order',
+        icon: 'fa fa-beer fa-lg',
+        url: '/drink-order'
       },
       {
         name: 'Events',
