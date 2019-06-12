@@ -11,7 +11,7 @@ class Member extends Model
     'email','phone','picture','access_level','created_by','modified_by','created_at','updated_at'];
     
     protected $hidden = [
-        'password', 'pivot'
+        'password', 'pivot', 'del_flag'
     ];
 
     public function teams(){
@@ -40,6 +40,11 @@ class Member extends Model
 
     public function interviewer_comments(){
         return $this->hasManyThrough(InterviewerComment::class, Interviewer::class, 'member_id', 'interviewer_id', 'id', 'id');
+    }
+
+    public function login($username, $password){
+        $user = Member::where(['username' => $username, 'password' => $password, 'del_flag' => false])->first();
+        return $user;
     }
 
 }

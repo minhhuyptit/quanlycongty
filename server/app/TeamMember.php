@@ -10,6 +10,8 @@ class TeamMember extends Model
     protected $fillable = ['id','del_flag','member_id','team_id','team_member_role',
     'created_by','modified_by','created_at','updated_at'];
 
+    protected $hidden = ['del_flag'];
+
     public function team(){
         return $this->belongsTo(Team::class, 'team_id', 'id');
     }

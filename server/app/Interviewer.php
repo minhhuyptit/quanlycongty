@@ -11,7 +11,7 @@ class Interviewer extends Model
     'created_by','modified_by','created_at','updated_at'];   
 
     protected $hidden = [
-        'laravel_through_key'
+        'laravel_through_key', 'del_flag'
     ];
 
     public function member(){

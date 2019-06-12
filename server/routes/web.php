@@ -9,6 +9,7 @@ use App\CandidateSkill;
 use App\Interview;
 use App\Interviewer;
 use App\InterviewerComment;
+use App\Config\Messages;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +21,3 @@ use App\InterviewerComment;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('getMember', function () {
-    $element = Member::find(1);
-    // $team = Team::find(3);
-    return $element->interviewer_comments;
-});

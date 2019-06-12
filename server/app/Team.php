@@ -11,7 +11,7 @@ class Team extends Model
     'created_by','modified_by','created_at','updated_at'];
 
     protected $hidden = [
-        'pivot'
+        'pivot', 'del_flag'
     ];
 
     public function members(){

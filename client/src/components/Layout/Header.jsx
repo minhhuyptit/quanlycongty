@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 import { AppSidebarToggler, AppNavbarBrand } from "@coreui/react";
 import {
   Dropdown,
@@ -8,20 +10,31 @@ import {
   Nav,
   Badge
 } from "reactstrap";
-class DefaultHeader extends Component {
+class Header extends Component {
   constructor(props) {
     super(props);
 
-    this.toggle = this.toggle.bind(this);
     this.state = {
       dropdownOpen: false
     };
+
+    this.toggle = this.toggle.bind(this);
+    this.showProfilePage = this.showProfilePage.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   toggle() {
     this.setState(prevState => ({
       dropdownOpen: !prevState.dropdownOpen
     }));
+  }
+
+  showProfilePage() {
+    this.props.history.push("/profile");
+  }
+
+  handleLogout() {
+    this.props.history.push("/login");
   }
 
   render() {
@@ -31,32 +44,26 @@ class DefaultHeader extends Component {
         <AppNavbarBrand
           full={{
             src: "/images/logo.png",
-            width: 89,
-            height: 25,
-            alt: "CoreUI Logo"
-          }}
-          minimized={{
-            src: "/images/logo.png",
-            width: 30,
-            height: 30,
-            alt: "CoreUI Logo"
+            width: 120,
+            height: 35,
+            alt: "Logo"
           }}
         />
         <AppSidebarToggler className="d-md-down-none" display="lg" />
         <Nav className="ml-auto" navbar>
           <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
             <DropdownToggle nav>
-              <img 
+              <img
                 src="/images/avatar-default.png"
                 className="dropdown-avatar"
                 alt="avatar"
               />
             </DropdownToggle>
-            <DropdownMenu right style={{ right: "auto" }}>
+            <DropdownMenu>
               <DropdownItem className="text-center" header>
                 <strong>Account</strong>
               </DropdownItem>
-              <DropdownItem>
+              <DropdownItem onClick={this.showProfilePage}>
                 <div className="user-option">
                   <img src={"/images/avatar-default.png"} alt="avatar" />
                   <div>
@@ -94,11 +101,13 @@ class DefaultHeader extends Component {
                 Setting
               </DropdownItem>
               <DropdownItem>
-                <i className="fa fa-user-o fa-lg" />Change Password
+                <i className="fa fa-user-o fa-lg" />
+                Change Password
               </DropdownItem>
               <DropdownItem divider />
-              <DropdownItem>
-                <i className="fa fa-lock fa-lg" />Logout
+              <DropdownItem onClick={this.handleLogout}>
+                <i className="fa fa-lock fa-lg" />
+                Logout
               </DropdownItem>
             </DropdownMenu>
           </Dropdown>
@@ -108,4 +117,4 @@ class DefaultHeader extends Component {
   }
 }
 
-export default DefaultHeader;
+export default withRouter(connect(null,null)(Header));

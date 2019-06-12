@@ -1,16 +1,14 @@
-import React, { Component } from "react";
-import { Container, Row, Col } from "reactstrap";
+import React, {Component} from "react";
+import {Container, Row, Col} from "reactstrap";
+import {Form, Button, Card, Input, Segment, Loader} from "semantic-ui-react";
 
-import { Form, Button, Card, Input, Segment, Loader } from "semantic-ui-react";
-
-import "./Login.scss";
+import "./login.scss";
 
 class Login extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      isLoading: false,
       username: "",
       password: ""
     };
@@ -29,14 +27,14 @@ class Login extends Component {
   }
 
   handleSubmit() {
-    if (this.state.username !== "" && this.state.password !== "") {
-      this.setState({ isLoading: true });
-      console.log(this.state);
+    let {username, password} = this.state;
+    if (username !== "" && password !== "") {
+      this.props.handleSubmit(username, password);
     }
   }
 
   render() {
-    let { isLoading, username, password } = this.state;
+    let {username, password} = this.state;
     let hrefLink = "#";
 
     return (
@@ -50,7 +48,7 @@ class Login extends Component {
               <Segment color="red">
                 <Card fluid>
                   <Card.Content>
-                    <Loader size="massive" active={isLoading} />
+                    <Loader size="massive" active={this.props.isLoading} />
                     <img id="logo" src="/images/logo.png" alt="logo" />
                     <Form>
                       <Form.Field
@@ -75,33 +73,15 @@ class Login extends Component {
                       <a href={hrefLink} className="forgot-password">
                         Forgot password?
                       </a>
-                      <Button
-                        fluid
-                        color="blue"
-                        type="submit"
-                        content="Login"
-                        onClick={this.handleSubmit}
-                      />
+                      <Button fluid color="blue" type="submit" content="Login" onClick={this.handleSubmit} />
                     </Form>
                     <hr className="hr-text" data-content="Or" />
                     <Row>
                       <Col xs="6">
-                        <Button
-                          size="small"
-                          id="btn-facebook"
-                          color="facebook"
-                          icon="facebook"
-                          content="Facebook"
-                        />
+                        <Button size="small" id="btn-facebook" color="facebook" icon="facebook" content="Facebook" />
                       </Col>
                       <Col xs="6">
-                        <Button
-                          size="small"
-                          id="btn-google"
-                          color="google plus"
-                          icon="google plus"
-                          content="Google"
-                        />
+                        <Button size="small" id="btn-google" color="google plus" icon="google plus" content="Google" />
                       </Col>
                     </Row>
                   </Card.Content>
