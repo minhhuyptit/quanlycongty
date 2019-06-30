@@ -1,7 +1,7 @@
 <?php
-namespace App\Config;
+namespace App\Configs;
 
-require_once app_path() . '/config/constants.php';
+require_once app_path() . '/configs/constants.php';
 class Messages
 {
     // Login
@@ -124,9 +124,45 @@ class Messages
         )
     );
 
+    public static $team = array(
+        GET_ALL_TEAM_SUCCESS => array(
+            'vi' => 'Lấy danh sách tất cả nhóm thành công',
+            'en' => 'Get the list of all successful teams',
+            'jp' => '成功したすべてのチームのリストを入手する'
+        ),
+        TEAM_NOT_FOUND => array(
+            'vi' => 'Nhóm không tìm thấy. Vui lòng kiểm tra lại',
+            'en' => 'Team not found. Please check again',
+            'jp' => 'チームが見つかりませんでした。再度確認してください'
+        ),
+        GET_MEMBERS_OF_TEAM_SUCCESS => array(
+            'vi' => 'Lấy danh sách thành viên của nhóm thành công',
+            'en' => 'Get the list of members of the group successfully',
+            'jp' => 'グループのメンバーのリストを正常に取得する'
+        ),
+        GET_MEMBERS_OF_TEAM_FAIL => array(
+            'vi' => 'Lấy danh sách thành viên của nhóm thất bại',
+            'en' => 'Get the list of members of the group failded',
+            'jp' => '失敗したグループのメンバーのリストを取得する'
+        )
+    );
+
+    public static $common = array(
+        GET_SUCCESS => array(
+            'vi' => 'Lấy dữ liệu thành công',
+            'en' => 'Get data successfully',
+            'jp' => 'データを取得する'
+        ),
+        ID_NOT_FOUND => array(
+            'vi' => 'ID không tìm thấy. Vui lòng kiểm tra lại',
+            'en' => 'ID not found. Please check again',
+            'jp' => 'IDが見つかりません。再度確認してください'
+        )
+    );    
+
     public static function messages($key_message, $lang = 'en')
     {
-        $data = array_merge(static::$login, static::$member, static::$config);
+        $data = array_merge(static::$login, static::$member, static::$config, static::$team, static::$common);
         return $data[$key_message][$lang];
     }
 }

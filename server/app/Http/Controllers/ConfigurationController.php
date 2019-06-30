@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Configuration;
 
-require_once app_path().'/config/constants.php';
+require_once app_path().'/configs/constants.php';
 class ConfigurationController extends Controller
 {
     /**

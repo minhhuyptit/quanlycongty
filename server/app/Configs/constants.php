@@ -1,4 +1,8 @@
 <?php
+    //Common
+    define('GET_SUCCESS', 'GET_SUCCESS');
+    define('ID_NOT_FOUND', 'ID_NOT_FOUND');
+
     // Login
     define('LOGIN_SUCCESS', 'LOGIN_SUCCESS');
     define('LOGIN_FAIL', 'LOGIN_FAIL');
@@ -27,3 +31,11 @@
     define('GET_CONFIG_SUCCESS', 'GET_CONFIG_SUCCESS');
     define('GET_CONFIG_FAIL', 'GET_CONFIG_FAIL');
 
+    // Team
+    define('GET_ALL_TEAM_SUCCESS', 'GET_ALL_TEAM_SUCCESS');
+    define('TEAM_NOT_FOUND', 'TEAM_NOT_FOUND');
+    define('GET_MEMBERS_OF_TEAM_SUCCESS', 'GET_MEMBERS_OF_TEAM_SUCCESS');
+    define('GET_MEMBERS_OF_TEAM_FAIL', 'GET_MEMBERS_OF_TEAM_FAIL');
+
+
+    

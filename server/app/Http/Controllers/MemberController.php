@@ -7,7 +7,7 @@ use App\Http\Requests\MemberRequest;
 use App\Member;
 use Illuminate\Http\Request;
 
-require_once app_path() . '/config/constants.php';
+require_once app_path() . '/configs/constants.php';
 
 class MemberController extends Controller {
     /**
