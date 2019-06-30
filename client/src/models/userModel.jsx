@@ -15,19 +15,25 @@ export const user = {
     }
   },
   effects: {
-    async asynLogin(item) {
-      let res = await authenApi.call("login", {
+    async asyncUpdateUser(user) {
+      let {id, fullname, birthday, is_male, email, phone, picture} = user;
+      let res = await authenApi.call("updateUser", {
         body: {
-          username: item["username"],
-          password: item["password"]
+          fullname,
+          birthday,
+          is_male,
+          email,
+          phone,
+          picture,
+          execute_by: id
+        },
+        url: {
+          id
         }
       });
-      if (res.status === 200) {
-        // console.log("Zo day", res.data);
-        this.updateUser(res.data);
-      } else {
-        alert("Error: " + res.message);
-      }
+
+      console.log("Result: ", res);
+
     }
   }
 };

@@ -7,20 +7,6 @@ class ProfileContainer extends Component {
   constructor(props) {
     super(props);
 
-    let dumpData = {
-      username: "huyla36ca",
-      fullname: "Nguyễn Hà Minh Huy",
-      is_male: true,
-      birthday: "2019-06-21",
-      email: "minhhuy97.ptit@gmail.com",
-      phone: "0794755005",
-      picture: "avatar-default",
-      access_level: "Admin"
-    };
-    this.state = {
-      userInfo: dumpData
-    };
-
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -31,7 +17,7 @@ class ProfileContainer extends Component {
   render() {
     return (
       <React.Fragment>
-        <Profile userInfo={this.state.userInfo} handleSubmit={this.handleSubmit} />
+        <Profile userInfo={this.props.userInfo} handleSubmit={this.handleSubmit} />
       </React.Fragment>
     );
   }
@@ -39,7 +25,7 @@ class ProfileContainer extends Component {
 
 const mapStateToProps = state => {
   return {
-    userInfo: state.member
+    userInfo: state.user.user
   };
 };
 

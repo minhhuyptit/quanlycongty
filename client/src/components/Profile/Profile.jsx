@@ -24,14 +24,13 @@ class Profile extends Component {
   }
 
   handleSubmit(picture) {
-    let {username, fullname, is_male, birthday, email, phone, access_level} = this.state.userInfo;
-    let data = {username, fullname, is_male, birthday, email, phone, picture, access_level};
+    let {id, username, fullname, is_male, birthday, email, phone, access_level} = this.state.userInfo;
+    let data = {id, username, fullname, is_male, birthday, email, phone, picture, access_level};
     this.props.handleSubmit(data);
   }
 
   render() {
     return (
-      <React.Fragment>
         <Card id="profile" style={{ height: "80%" }}>
           <CardBody>
             <Segment color="teal">
@@ -44,7 +43,6 @@ class Profile extends Component {
             </Segment>
           </CardBody>
         </Card>
-      </React.Fragment>
     );
   }
 }

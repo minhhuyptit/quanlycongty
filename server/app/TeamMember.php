@@ -7,21 +7,28 @@ use Illuminate\Database\Eloquent\Model;
 class TeamMember extends Model
 {
     protected $table = 'team_member';
-    protected $fillable = ['id','del_flag','member_id','team_id','team_member_role',
-    'created_by','modified_by','created_at','updated_at'];
+    protected $fillable = [
+        'id', 'del_flag', 'member_id', 'team_id', 'team_member_role',
+        'created_by', 'modified_by', 'created_at', 'updated_at'
+    ];
 
     protected $hidden = ['del_flag'];
 
-    public function team(){
-        return $this->belongsTo(Team::class, 'team_id', 'id');
+    public function team()
+    {
+        return $this->belongsTo(Team::class, 'team_id', 'id')
+            ->where('del_flag', false);
     }
 
-    public function member(){
-        return $this->belongsTo(Member::class, 'member_id', 'id');
-    }
-    
-    public function member_role(){
-        return $this->belongsTo(Configuration::class, 'team_member_role', 'id');
+    public function member()
+    {
+        return $this->belongsTo(Member::class, 'member_id', 'id')
+            ->where('del_flag', false);
     }
 
+    public function member_role()
+    {
+        return $this->belongsTo(Configuration::class, 'team_member_role', 'id')
+            ->where('del_flag', false);
+    }
 }

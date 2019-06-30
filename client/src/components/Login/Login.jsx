@@ -43,8 +43,7 @@ class Login extends Component {
           <source src="/video/background_login.mp4" type="video/mp4" />
         </video>
         <Row className="justify-content-center">
-          <Col md="4" className="form-login">
-            <Row>
+          <Col lg="4" md="6" sm="8" xs="10" className="form-login">
               <Segment color="red">
                 <Card fluid>
                   <Card.Content>
@@ -77,17 +76,16 @@ class Login extends Component {
                     </Form>
                     <hr className="hr-text" data-content="Or" />
                     <Row>
-                      <Col xs="6">
+                      <Col xs="12" sm="6">
                         <Button size="small" id="btn-facebook" color="facebook" icon="facebook" content="Facebook" />
                       </Col>
-                      <Col xs="6">
+                      <Col xs="12" sm="6">
                         <Button size="small" id="btn-google" color="google plus" icon="google plus" content="Google" />
                       </Col>
                     </Row>
                   </Card.Content>
                 </Card>
               </Segment>
-            </Row>
           </Col>
         </Row>
       </Container>

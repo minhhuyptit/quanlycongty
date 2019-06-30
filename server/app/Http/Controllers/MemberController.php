@@ -2,21 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\MemberRequest;
 use App\Member;
 use Illuminate\Http\Request;
-use App\Http\Requests\LoginRequest;
 
-require_once app_path().'/config/constants.php';
+require_once app_path() . '/config/constants.php';
 
-class MemberController extends Controller
-{
+class MemberController extends Controller {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index() {
         //
     }
 
@@ -25,8 +24,7 @@ class MemberController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create() {
         //
     }
 
@@ -36,8 +34,7 @@ class MemberController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         //
     }
 
@@ -47,8 +44,7 @@ class MemberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
+    public function show($id) {
         //
     }
 
@@ -58,8 +54,7 @@ class MemberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
+    public function edit($id) {
         //
     }
 
@@ -70,9 +65,8 @@ class MemberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(MemberRequest $request, $id) {
+        return $request->picture;
     }
 
     /**
@@ -81,21 +75,24 @@ class MemberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id) {
         //
     }
 
-    public function login(LoginRequest $request)
-    {
+    public function login(LoginRequest $request) {
         $user = new Member();
         $res = $user->login($request->username, md5($request->password));
         if (!empty($res)) {
             $res['access_level'] = $res->member_role['description'];
-            $listUnset = ['member_role', 'created_by', 'modified_by', 'created_at', 'updated_at'];
-            parent::removeElements($res, $listUnset);
+            $listUnsetMemberRole = ['member_role', 'created_by', 'modified_by', 'created_at', 'updated_at'];
+            parent::removeElements($res, $listUnsetMemberRole);
+            $res->teams; //Get list teams of member
+            foreach ($res['teams'] as $val) {
+                $listUnsetTeam = ['leader', 'description', 'created_by', 'modified_by', 'created_at', 'updated_at'];
+                parent::removeElements($val, $listUnsetTeam);
+            }
             return parent::response(200, LOGIN_SUCCESS, $res);
-          }else{
+        } else {
             return parent::response(404, LOGIN_FAIL);
         }
     }

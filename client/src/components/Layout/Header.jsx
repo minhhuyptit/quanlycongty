@@ -1,15 +1,8 @@
-import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
-import { connect } from "react-redux";
-import { AppSidebarToggler, AppNavbarBrand } from "@coreui/react";
-import {
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownToggle,
-  Nav,
-  Badge
-} from "reactstrap";
+import React, {Component} from "react";
+import {withRouter} from "react-router-dom";
+import {connect} from "react-redux";
+import {AppSidebarToggler, AppNavbarBrand} from "@coreui/react";
+import {Dropdown, DropdownItem, DropdownMenu, DropdownToggle, Nav, Badge} from "reactstrap";
 class Header extends Component {
   constructor(props) {
     super(props);
@@ -38,6 +31,7 @@ class Header extends Component {
   }
 
   render() {
+    let {fullname, email, picture} = this.props.userInfo;
     return (
       <React.Fragment>
         <AppSidebarToggler className="d-lg-none" display="md" mobile />
@@ -53,11 +47,7 @@ class Header extends Component {
         <Nav className="ml-auto" navbar>
           <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
             <DropdownToggle nav>
-              <img
-                src="/images/avatar-default.png"
-                className="dropdown-avatar"
-                alt="avatar"
-              />
+              <img src={"/images/" + picture} className="dropdown-avatar" alt="avatar" />
             </DropdownToggle>
             <DropdownMenu>
               <DropdownItem className="text-center" header>
@@ -65,10 +55,10 @@ class Header extends Component {
               </DropdownItem>
               <DropdownItem onClick={this.showProfilePage}>
                 <div className="user-option">
-                  <img src={"/images/avatar-default.png"} alt="avatar" />
+                  <img src={"/images/" + picture} alt="avatar" />
                   <div>
-                    <strong>Nguyễn Hà Minh Huy</strong>
-                    <div>minhhuy97.ptit@gmail.com</div>
+                    <strong>{fullname}</strong>
+                    <div>{email}</div>
                   </div>
                 </div>
               </DropdownItem>
@@ -117,4 +107,15 @@ class Header extends Component {
   }
 }
 
-export default withRouter(connect(null,null)(Header));
+const mapStateToProps = state => {
+  return {
+    userInfo: state.user.user
+  };
+};
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    null
+  )(Header)
+);

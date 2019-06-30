@@ -49,7 +49,7 @@ class LoginRequest extends FormRequest
         throw new HttpResponseException(response()->json(
             [
                 'status'  => 404,
-                'message' => Messages::messages($error, 'en'),
+                'message' => Messages::messages($error),
                 'data'    => []
             ]
         ));

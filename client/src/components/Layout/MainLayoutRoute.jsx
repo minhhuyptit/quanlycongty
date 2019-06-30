@@ -20,10 +20,22 @@ const ProfileContainer = Loadable({
   loading: Loading
 });
 
+const ConfigurationContainer = Loadable({
+  loader: () => import("./../../containers/ConfigurationContainer"),
+  loading: Loading
+});
+
+const TeamManagementContainer = Loadable({
+  loader: () => import("./../../containers/TeamManagementContainer"),
+  loading: Loading
+});
+
 const routes = [
   { exact:true, path: '/', name: "Home", component: MainLayout },
   { exact:true, path: '/dashboard', name: "Dashboard", component: MainPageContainer },
-  { exact:true, path: '/profile', name: "Profile", component: ProfileContainer}
+  { exact:true, path: '/profile', name: "Profile", component: ProfileContainer},
+  { exact:true, path: '/management/team', name: "Management Team", component: TeamManagementContainer},
+  { exact:true, path: '/configuration', name: "Configuration", component: ConfigurationContainer},
 ];
 
 export default routes;

@@ -35,7 +35,7 @@ export default {
       {
         name: 'Team Management',
         icon: 'fa fa-users fa-lg',
-        url: '/team'
+        url: '/management/team'
       },
       {
         name: 'Configuration',

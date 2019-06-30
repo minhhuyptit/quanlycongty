@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Configuration;
 
+require_once app_path().'/config/constants.php';
 class ConfigurationController extends Controller
 {
     /**
@@ -13,7 +15,12 @@ class ConfigurationController extends Controller
      */
     public function index()
     {
-        //
+        $config = new Configuration();
+        $res = $config->getConfig();
+        if($res === false){
+            return parent::response(404, GET_CONFIG_FAIL);
+        }
+        return parent::response(200, GET_CONFIG_SUCCESS, $res);
     }
 
     /**
@@ -34,7 +41,7 @@ class ConfigurationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -43,9 +50,14 @@ class ConfigurationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($type)
     {
-        //
+        $config = new Configuration();
+        $res = $config->getConfigByType($type);
+        if($res === false){
+            return parent::response(404, GET_CONFIG_FAIL);
+        }
+        return parent::response(200, GET_CONFIG_SUCCESS, $res);
     }
 
     /**
